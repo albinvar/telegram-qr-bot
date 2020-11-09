@@ -1,24 +1,22 @@
 <?php
 // Library
 
-require './config.php';
-
 class QrBot {
 	
-	private $telegram;
+	private $tg;
 	public $message;
 	public $chatId;
 	
 	function __construct($api) {
 		
-		$telegram = new Telegram($api);
-		$this->telegram = $telegram;
+		$tg = new Telegram($api);
+		$this->tg = $tg;
 		
 		}
 	
 	private function getResults() {
 		
-		$result = $this->telegram->getData();
+		$result = $this->tg->getData();
 		return $result;
 		
 		}
@@ -35,14 +33,15 @@ class QrBot {
 		
 	public function getInfo() {
 		
-		$firstName = $this->telegram->FirstName();
-		$this->$firstName = $firstName;
+		$firstName = $this->tg->FirstName();
+		$this->firstName = $firstName;
 		//more infos
 		}
 		
 		
 	public function sendText($message) {
 		
+		$this->getData();
 		if (!empty($message)) {
 		$chat_id = $this->chatId;
 		$reply = $message;
