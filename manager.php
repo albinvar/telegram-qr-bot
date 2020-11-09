@@ -5,5 +5,5 @@ require './config.php';
 require './QrBot.php';
 
 
-$telegram = new TelegramApi($botApi);
+$object = new QrBot($botApi);
 
