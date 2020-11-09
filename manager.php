@@ -9,7 +9,7 @@ require './functions.php';
 $botToken = getApi();
 $botUsername = getUsername();
 
-$object = new QrBot($botApi);
+$object = new QrBot($botToken);
 if ($object->message == "/start") {
 $object->sendText("test");
 }
