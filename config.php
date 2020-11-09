@@ -4,7 +4,4 @@
 
 include './vendor/autoload.php';
 
-// Libraries
-$botToken = getApi();
-$botUsername = getUsername();
 
