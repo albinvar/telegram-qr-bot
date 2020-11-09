@@ -37,7 +37,18 @@ class QrBot {
 		
 		$firstName = $this->telegram->FirstName();
 		$this->$firstName = $firstName;
+		//more infos
+		}
 		
+		
+	public function sendText($message) {
+		
+		if (!empty($message)) {
+		$chat_id = $this->chatId;
+		$reply = $message;
+		$content = array('chat_id' => $chat_id, 'text' => $reply);
+		return $this->telegram->sendMessage($content);
+	}
 		}
 	
 }
