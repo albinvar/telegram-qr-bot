@@ -11,23 +11,28 @@ class QrBot {
 		
 		$tg = new Telegram($api);
 		$this->tg = $tg;
+		$result = $tg->getData();
+		$text = $result['message'] ['text'];
+		$chat_id = $result['message'] ['chat']['id'];
+		if (!empty($text)) {
+		$reply = "test";
+		$content = array('chat_id' => $chat_id, 'text' => $reply);
+		return $tg->sendMessage($content);
+	}
+		
 		
 		}
 	
 	private function getResults() {
 		
-		$result = $this->tg->getData();
+		
 		return $result;
 		
 		}
 		
 	public function getData() {
 		
-		$result = $this->getResults();
-		$text = $result['message'] ['text'];
-		$chat_id = $result['message'] ['chat']['id'];
-		$this->message = $text;
-		$this->chatId = $chat_id;
+		
 		
 		}
 		
@@ -41,13 +46,6 @@ class QrBot {
 		
 	public function sendText($message) {
 		
-		$this->getData();
-		if (!empty($message)) {
-		$chat_id = $this->chatId;
-		$reply = $message;
-		$content = array('chat_id' => $chat_id, 'text' => $reply);
-		return $this->telegram->sendMessage($content);
-	}
 		}
 	
 }
